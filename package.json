@@ -1,0 +1,23 @@
+{
+  "name": "find-tennis-court",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "App to find nearby public tennis courts in Houston, TX",
+  "main": "server.js",
+  "scripts": {
+    "server": "nodemon backend/server"
+  },
+  "keywords": [
+    "tennis",
+    "houston",
+    "courts"
+  ],
+  "author": "Bobby Schade",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.10.9",
+    "node-geocoder": "^3.27.0",
+    "nodemon": "^2.0.4"
+  }
+}
