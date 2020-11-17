@@ -1,5 +1,8 @@
-const mongoose = require('mongoose');
-const geocoder = require('../utils/geocoder');
+// const mongoose = require('mongoose');
+// const geocoder = require('../utils/geocoder');
+
+import mongoose from 'mongoose';
+import geocoder from '../utils/geocoder.js';
 
 const CourtSchema = new mongoose.Schema({
   name: {
@@ -14,19 +17,16 @@ const CourtSchema = new mongoose.Schema({
   },
   numCourts: {
     type: Number,
-    required: true,
+    required: [true, 'Please add the number of courts'],
   },
   hasLights: {
     type: Boolean,
-    required: true,
   },
   hasPracticeWall: {
     type: Boolean,
-    required: true,
   },
   isCommunityCenter: {
     type: Boolean,
-    required: true,
   },
   location: {
     // GeoJSON Point
@@ -55,7 +55,7 @@ const CourtSchema = new mongoose.Schema({
 });
 
 // Geocode & create location field
-BootcampSchema.pre('save', async function (next) {
+CourtSchema.pre('save', async function (next) {
   const loc = await geocoder.geocode(this.address);
   this.location = {
     type: 'Point',
@@ -73,4 +73,6 @@ BootcampSchema.pre('save', async function (next) {
   next();
 });
 
-module.exports = mongoose.model('Court', CourtSchema);
+const Court = mongoose.model('Court', CourtSchema);
+
+export default Court;
