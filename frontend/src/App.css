@@ -1,0 +1,18 @@
+h1 {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+button {
+  display: block;
+  margin: auto;
+  padding: 8px 20px;
+  border-radius: 5px;
+  background-color: #dfff4f;
+}
+
+.table {
+  margin: 2rem 0;
+  padding: 10rem;
+  text-align: center;
+}
