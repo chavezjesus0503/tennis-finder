@@ -15,14 +15,22 @@ const Locate = ({
       `/tenniscourts/radius/${coords.latitude}/${coords.longitude}/${miles}`
     );
     setCourts(res.data.data);
-    console.log(res.data.data);
   };
 
   const showCourts = () => {
     return courts.map((court) => (
       <tr key={court._id}>
         <td>{court.name}</td>
-        <td>{court.location.formattedAddress}</td>
+        <td>
+          <address>
+            <a
+              href={`http://maps.google.com/?q=${court.location.formattedAddress}`}
+              target="blank"
+            >
+              {court.location.formattedAddress}
+            </a>
+          </address>
+        </td>
         <td>{court.numCourts}</td>
         <td>{court.hasLights ? 'Yes' : 'No'}</td>
         <td>{court.hasPracticeWall ? 'Yes' : 'No'}</td>
