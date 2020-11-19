@@ -97,7 +97,7 @@ const courts = [
   },
   {
     name: 'Clinton Park',
-    address: '200 Mississippi, 77029',
+    address: '200 Mississippi Street, 77029',
     numCourts: 2,
     hasLights: true,
     hasPracticeWall: false,
@@ -145,7 +145,7 @@ const courts = [
   },
   {
     name: 'Emancipation Park',
-    address: '3018 Dowling, 77004',
+    address: '3018 Emancipation Avenue, 77004',
     numCourts: 2,
     hasLights: true,
     hasPracticeWall: true,
@@ -161,7 +161,7 @@ const courts = [
   },
   {
     name: 'Fleming Park',
-    address: '1901 Sunset, 77005',
+    address: '1901 Sunset Blvd, 77005',
     numCourts: 2,
     hasLights: false,
     hasPracticeWall: false,
@@ -324,14 +324,6 @@ const courts = [
     address: '5235 Saxon, 77092',
     numCourts: 1,
     hasLights: false,
-    hasPracticeWall: true,
-    isCommunityCenter: false,
-  },
-  {
-    name: 'Mason Park',
-    address: '541 South 75th, 77023',
-    numCourts: 2,
-    hasLights: true,
     hasPracticeWall: true,
     isCommunityCenter: false,
   },
