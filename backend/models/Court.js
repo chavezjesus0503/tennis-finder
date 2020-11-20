@@ -1,6 +1,3 @@
-// const mongoose = require('mongoose');
-// const geocoder = require('../utils/geocoder');
-
 import mongoose from 'mongoose';
 import geocoder from '../utils/geocoder.js';
 
@@ -29,12 +26,8 @@ const CourtSchema = new mongoose.Schema({
     type: Boolean,
   },
   location: {
-    // GeoJSON Point
-    // see mongoose docs using GeoJSON
-    // Point schema
     type: {
       type: String,
-      // means this the only value this can be, the only string value this can be
       enum: ['Point'],
     },
     coordinates: {
@@ -53,6 +46,8 @@ const CourtSchema = new mongoose.Schema({
     default: Date.now,
   },
 });
+
+CourtSchema.index({ location: '2dsphere' });
 
 // Geocode & create location field
 CourtSchema.pre('save', async function (next) {

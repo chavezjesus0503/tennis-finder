@@ -25,16 +25,30 @@ app.get(
   async (req, res) => {
     const { latitude, longitude, distance } = req.params;
 
-    // Calc radius using radians
-    // Divide dist by radius of Earth
-    // Earth Radius = 3,963 miles / 6,378 kilometers
-    const radius = distance / 3963;
-
+    // Return courts in order of nearest to farthest from [long, lat]
     const courts = await Court.find({
       location: {
-        $geoWithin: { $centerSphere: [[longitude, latitude], radius] },
+        $nearSphere: {
+          $geometry: {
+            type: 'Point',
+            coordinates: [longitude, latitude],
+          },
+          $maxDistance: distance * 1609.34,
+        },
       },
     });
+
+    // Return in order of nearest to farthest incl distances from [long, lat]
+    // const courts = await Court.aggregate([
+    //   {
+    //     $geoNear: {
+    //       near: { type: 'Point', coordinates: [longitude, latitude] },
+    //       key: 'location',
+    //       distanceField: 'dist.calculated',
+    //       spherical: true,
+    //     },
+    //   },
+    // ]);
 
     res.status(200).json({
       success: true,

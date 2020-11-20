@@ -14,7 +14,9 @@ const Locate = ({
     const res = await axios.get(
       `/tenniscourts/radius/${coords.latitude}/${coords.longitude}/${miles}`
     );
+
     setCourts(res.data.data);
+    console.log(res.data.data);
   };
 
   const showCourts = () => {
